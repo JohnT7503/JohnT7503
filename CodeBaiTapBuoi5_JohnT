@@ -1,0 +1,207 @@
+;
+import java.util.Arrays;
+
+public class Office1 {
+
+        public static Scanner sc = new Scanner(System.in);
+
+        public static void main(String[] args) {
+
+                while (true) {
+                        System.out.println("+----------------------+");
+                        System.out.println("1. Nhap 2 so x, y va tinh tong S");
+                        System.out.println("2. Xu ly mang");
+                        System.out.println("3. Bang cuu chuong, Tinh S, ktra so chinh phuong");
+                        System.out.println("4. Thoat");
+                        System.out.println("+----------------------+");
+                        int select = sc.nextInt();
+
+                        switch (select) {
+                                case 1:
+                                        Bai1();
+                                        break;
+                                case 2:
+                                        Bai2();
+                                        break;
+                                case 3:
+                                        Bai3();
+                                        break;
+                                case 4:
+                                        System.exit(0);
+                                default:
+                                        System.out.println("Khong co lua chon nay, vui long chon lai =))");
+                        }
+                }
+        }
+
+        public static void Bai1() {
+                System.out.println("Nhap vao n: ");
+                int n = sc.nextInt();
+                System.out.println("Nhap vao x: ");
+                int x = sc.nextInt();
+
+                float S1 = 1;
+                float S2 = 0;
+                float S3 = 0;
+
+                for (int i = 1; i <= n; i++) {
+                        S1 *= i;
+                }
+                System.out.println("S1 = " + S1);
+
+                for (int i = 1; i <= n; i++) {
+                        S2 += 1.0 / ((i * 2) - 1);
+                }
+                System.out.println("S2 = " + S2);
+
+                for (int i = 1; i <= n; i++) {
+                        S3 += Math.pow(x, i * 2);
+                }
+                System.out.println("S3 = " + S3);
+        }
+
+        public static void Bai2() {
+                System.out.println("Nhap vao kich thuoc mang: ");
+                int n = sc.nextInt();
+
+                int[] arr = new int[n];
+                for (int i = 0; i < n; i++) {
+                        System.out.println("Nhap phan tu thu " + (i + 1) + ":");
+                        arr[i] = sc.nextInt();
+                }
+
+                int count = 0;
+                for (int i = 0; i < n; i++) {
+                        if (arr[i] % 2 != 0) {
+                                count++;
+                        }
+                }
+                System.out.println("Co " + count + " so le");
+
+                int max = arr[0];
+                int index = 0;
+                for (int i = 0; i < n; i++) {
+                        if (arr[i] > max) {
+                                max = arr[i];
+                                index = i + 1;
+                        }
+
+                }
+                System.out.println("Vi tri cua gia tri lon nhat la: " + index);
+
+                System.out.println("Nhap vao so bat ky: ");
+                int number = sc.nextInt();
+                int index1 = 0;
+
+                for (int i = 0; i < n; i++) {
+                        if (number == arr[i]) {
+                                index1 = i + 1;
+                        }
+                }
+                System.out.println("Vi tri cua so ton tai trong mang la: " + index1);
+
+                int index2 = 0;
+                for (int i = n - 1; i > 0; i--) {
+                        if (arr[i] > 0) {
+                                index2 = i + 1;
+                                System.out.println("So duong cuoi cung trong mang la: " + arr[i]);
+                                break;
+                        }
+                }
+
+                System.out.println("Vi tri cua so duong cuoi cung la: " + index2);
+
+                System.out.println("Mang truoc khi xap sep la: ");
+                for (int i = 0; i < n; i++) {
+                        System.out.println(arr[i]);
+                }
+                Arrays.sort(arr);
+                System.out.println("Mang sau khi Sap xep mang Tang dan: ");
+                for (int i = 0; i < n; i++) {
+                        System.out.println(arr[i]);
+                }
+                System.out.println("Mang sau khi Sap xep mang giam dan: ");
+                int temp = 0;
+                for (int i = 0; i < n; i++) {
+                        for (int j = i + 1; j < n; j++) {
+                                if (arr[i] < arr[j]) {
+                                        temp = arr[i];
+                                        arr[i] = arr[j];
+                                        arr[j] = temp;
+
+                                }
+                        }
+                        System.out.println(arr[i]);
+                }
+        }
+
+        public static void Bai3() {
+                while (true) {
+                        System.out.println("+-------------------+");
+                        System.out.println("1. Tinh S = x^y");
+                        System.out.println("2. Kiem tra so chinh phuong");
+                        System.out.println("3. In ra bang cuu chuong");
+                        System.out.println("4. Thoat");
+                        System.out.println("+-------------------+");
+                        int luaChon = sc.nextInt();
+
+                        switch (luaChon) {
+                                case 1:
+                                        giaiBt1Bai3();
+                                        break;
+                                case 2:
+                                        giaiBt2Bai3();
+                                        break;
+                                case 3:
+                                        giaiBt3Bai3();
+                                        break;
+                                case 4:
+                                        System.exit(0);
+                                default:
+                                        System.out.println("Khong co lua chon nay, vui long nhap lai: ");
+                        }
+
+                }
+
+        }
+
+        static void giaiBt1Bai3() {
+                System.out.println("Nhap x: ");
+                double x = sc.nextDouble();
+                System.out.println("Nhap y: ");
+                double y = sc.nextDouble();
+
+                double S = 0;
+                S = Math.pow(x, y);
+                System.out.println("S = " + S);
+        }
+
+        static void giaiBt2Bai3() {
+                System.out.println("Nhap vao so tu nhien: ");
+                int n = sc.nextInt();
+                int count = 0;
+                for (int i = 1; i <= n; i++) {
+                        if ((i * i) == n) {
+                                count++;
+                        }
+                }
+                if (count != 0) {
+                        System.out.println(n + " la so chinh phuong");
+                } else {
+                        System.out.println(n + " khong phai la so chinh phuong");
+                }
+
+        }
+
+        static void giaiBt3Bai3() {
+                System.out.println("BANG CUU CHUONG");
+
+                for (int i = 1; i <= 10; i++) {
+                        System.out.println("Bang nhan " + i);
+                        for (int j = 1; j <= 10; j++) {
+                                System.out.println(i + " x " + j + " = " + (i * j));
+                        }
+                }
+        }
+
+}
